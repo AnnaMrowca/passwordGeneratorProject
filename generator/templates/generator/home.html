@@ -1,0 +1,53 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+
+<h1>Password Generator</h1>
+
+<form action="{% url 'password' %}" method="POST">
+    <select required name="length">
+        <option value="" selected disabled>Password length</option>
+        <option value="7">7 letters</option>
+        <option value="8">8 letters</option>
+        <option value="9">9 letters</option>
+        <option value="10">10 letters</option>
+        <option value="11">11 letters</option>
+        <option value="12">12 letters</option>
+        <option value="13">13 letters</option>
+        <option value="14">14 letters</option>
+        <option value="15">15 letters</option>
+    </select>
+
+
+    <label for="uppercase">Uppercase</label>
+    <input type="checkbox" name="uppercase" id="uppercase">
+
+
+
+    <label for="specialchars">Special characters</label>
+    <input type="checkbox" name="specialchars" id="specialchars">
+
+
+
+    <label for="numbers">Numbers</label>
+    <input type="checkbox" name="numbers" id="numbers">
+
+
+    {% csrf_token %}
+    <button type="submit">Generate</button>
+
+</form>
+    </div>
+
+<p class="about"><a href="{% url 'about' %}" >About</a></p>
+</body>
+</html>
